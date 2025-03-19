@@ -1,0 +1,410 @@
+### API для системы продавец/клиент
+@baseUrl=http://127.0.0.1:8000
+    
+### Регистрация клиента 1
+POST {{baseUrl}}/user/register/
+Content-Type: application/json
+
+{
+      "first_name": "Tatyana",
+      "last_name": "Tatyanina",
+      "email": "tanyamyasnov1712@yandex.ru",
+      "password": "client1password"
+}
+
+### Регистрация клиента 2
+POST {{baseUrl}}/user/register/
+Content-Type: application/json
+
+{
+      "first_name": "Igor",
+      "last_name": "Igorev",
+      "email": "igormyasnov2107@yandex.ru",
+      "password": "client2password"
+}
+
+### Регистрация продавца 1
+POST {{baseUrl}}/user/register/
+Content-Type: application/json
+
+{
+      "first_name": "Ivan",
+      "last_name": "Ivanov",
+      "company": "Retailer1",
+      "position": "Manager1",
+      "email": "antonlearn@yandex.ru",
+      "password": "retailer1password",
+      "type": "Retailer"
+}
+
+### Регистрация продавца 2
+POST {{baseUrl}}/user/register/
+Content-Type: application/json
+
+{
+      "first_name": "Petr",
+      "last_name": "Petrov",
+      "company": "Retailer2",
+      "position": "General Manager",
+      "email": "aivanovcustoms@yandex.ru",
+      "password": "retailer2password",
+      "type": "Retailer"
+}
+
+### Подтверждение регистрации клиента 1
+POST {{baseUrl}}/user/register/confirm/
+Content-Type: application/json
+
+{
+    "email": "tanyamyasnov1712@yandex.ru",
+    "token": "5b80a8e50fa7be2c7da5f988e1ef26f0501fbf01"
+}
+
+### Подтверждение регистрации клиента 2
+POST {{baseUrl}}/user/register/confirm/
+Content-Type: application/json
+
+{
+    "email": "igormyasnov2107@yandex.ru",
+    "token": "12b88823287d344ddec76deb12702cae6dc1629d44f79f"
+}
+
+### Подтверждение регистрации продавца 1
+POST {{baseUrl}}/user/register/confirm/
+Content-Type: application/json
+
+{
+    "email": "antonlearn@yandex.ru",
+    "token": "1c996d397c267d746eae"
+}
+
+### Подтверждение регистрации продавца 2
+POST {{baseUrl}}/user/register/confirm/
+Content-Type: application/json
+
+{
+    "email": "aivanovcustoms@yandex.ru",
+    "token": "f012894bd41e4640b2a9e6ae92c4b88938e6bd19634a77c5"
+}
+
+### Авторизация клиента 1
+POST {{baseUrl}}/user/login/
+Content-Type: application/json
+
+{
+    "email": "tanyamyasnov1712@yandex.ru",
+    "password": "client1password"
+}
+
+### Авторизация клиента 2
+POST {{baseUrl}}/user/login/
+Content-Type: application/json
+
+{
+    "email": "igormyasnov2107@yandex.ru",
+    "password": "client2password"
+}
+
+### Авторизация продавца 1
+POST {{baseUrl}}/user/login/
+Content-Type: application/json
+
+{
+    "email": "antonlearn@yandex.ru",
+    "password": "retailer1password"
+}
+
+### Авторизация продавца 2
+POST {{baseUrl}}/user/login/
+Content-Type: application/json
+
+{
+    "email": "aivanovcustoms@yandex.ru",
+    "password": "retailer2password"
+}
+
+### Выход из аккаунта клиента 1
+POST {{baseUrl}}/user/logout/
+Content-Type: application/json
+Authorization: Token 796ff2dbc36ff6ebb2ab536801bcf40b78175bce
+
+### Выход из аккаунта клиента 2
+POST {{baseUrl}}/user/logout/
+Content-Type: application/json
+Authorization: Token 95a440c00c3e93b9bd7a99a3be12d2a7406e19b1
+
+### Выход из аккаунта продавца 1
+POST {{baseUrl}}/user/logout/
+Content-Type: application/json
+Authorization: Token bbf3de3ea50608fd0551c120b0c900fec653d3e9
+
+### Выход из аккаунта продавца 2
+POST {{baseUrl}}/user/logout/
+Content-Type: application/json
+Authorization: Token bbf3de3ea50608fd0551c120b0c900fec653d3e9
+
+### Загрузка/Обновление прайс-листа продавцом 1
+POST {{baseUrl}}/partner/update/
+Content-Type: application/json
+Authorization: Token e6009d83d3b0d52d3478f0f6da8724a51ca19371
+
+{
+    "url": "https://raw.githubusercontent.com/AntonLearn/DiplomData/refs/heads/main/PriceListRetailer1.yaml"
+}
+
+### Загрузка/Обновление прайс-листа продавцом 2
+POST {{baseUrl}}/partner/update/
+Content-Type: application/json
+Authorization: Token 0ba5fdc66191cee79513432f368c346c2e1d2b43
+
+{
+    "url": "https://raw.githubusercontent.com/AntonLearn/DiplomData/refs/heads/main/PriceListRetailer2.yaml"
+}
+
+### Получение статуса продавца 
+GET {{baseUrl}}/partner/state/
+Content-Type: application/json
+Authorization: Token b6f693c3be6d1f9155a2e8d14000e0f92bd2e429
+
+### Получение списка категорий клиентом 
+GET {{baseUrl}}/categories/
+Content-Type: application/json
+Authorization: Token 694c62e128ebf628788df82b8151ddbfd56a715f
+
+### Включение приема заказов продавцом
+POST {{baseUrl}}/partner/state/
+Content-Type: application/json
+Authorization: Token fd8840f7403ddc833663de3b7f1cf83fdf98a59b
+
+{
+    "state": "On"
+}
+
+### Выключение приема заказов продавцом 
+POST {{baseUrl}}/partner/state/
+Content-Type: application/json
+Authorization: Token fd8840f7403ddc833663de3b7f1cf83fdf98a59b
+
+{
+    "state": "Off"
+}
+
+### Получение клиентом информации о всех товарах 
+GET {{baseUrl}}/products
+Content-Type: application/json
+Authorization: Token 694c62e128ebf628788df82b8151ddbfd56a715f
+
+### Получение клиентом информации о всех товарах продавца в выбранной категории 
+GET {{baseUrl}}/products/?retailer_id=1&category_id=1
+Content-Type: application/json
+Authorization: Token 694c62e128ebf628788df82b8151ddbfd56a715f
+
+### Получение клиентом информации о всех товарах продавца  
+GET {{baseUrl}}/products/?retailer_id=1
+Content-Type: application/json
+Authorization: Token 694c62e128ebf628788df82b8151ddbfd56a715f
+
+### Получение клиентом информации о товарах всех продавцов в выбранной категории  
+GET {{baseUrl}}/products/?category_id=1
+Content-Type: application/json
+Authorization: Token 694c62e128ebf628788df82b8151ddbfd56a715f
+
+### Наполнение клиентом корзины товаров 
+POST {{baseUrl}}/basket/
+Content-Type: application/json
+Authorization: Token df381cfa79746e1c46445816d02db50aee95f9ae
+
+{
+"items": [
+        {
+            "product_info": 1,
+            "quantity": 5
+        },
+        {
+            "product_info": 2,
+            "quantity": 3
+        }
+    ]
+}
+
+### Получение клиентом всего содержимого корзины товаров
+GET {{baseUrl}}/basket/
+Content-Type: application/json
+Authorization: Token df381cfa79746e1c46445816d02db50aee95f9ae
+
+### Внесение клиентом изменений в корзину товаров
+PUT {{baseUrl}}/basket/
+Content-Type: application/json
+Authorization: Token 694c62e128ebf628788df82b8151ddbfd56a715f
+
+{
+"items": [
+        {
+            "product_info": 10,
+            "quantity": 5
+        }
+    ]
+}
+
+### Удаление клиентом товара/товаров из корзины товаров
+DELETE {{baseUrl}}/basket/
+Content-Type: application/json
+Authorization: Token 694c62e128ebf628788df82b8151ddbfd56a715f
+
+{
+"items": [1, 2]
+}
+
+### Просмотр клиентом контактов
+GET {{baseUrl}}/user/contact/
+Content-Type: application/json
+Authorization: Token 8c1daf94adb834a252ae67147024b264e2a5f66a
+
+### Заполнение клиентом контактов
+POST {{baseUrl}}/user/contact/
+Content-Type: application/json
+Authorization: Token df381cfa79746e1c46445816d02db50aee95f9ae
+
+{
+    "country": "Russia",
+    "city": "Moscow",
+    "street": "Red Square",
+    "house": "1",
+    "apartment": "1",
+    "phone": "00-00-00",
+    "postal_code": "100000"
+}
+
+### Обновление клиентом контактов
+PUT {{baseUrl}}/user/contact/
+Content-Type: application/json
+Authorization: Token 694c62e128ebf628788df82b8151ddbfd56a715f
+
+{
+    "id_contact": 2,
+    "building": "1",
+    "apartment": ""
+}
+
+### Удаление клиентом своего/своих контактов 
+DELETE {{baseUrl}}/user/contact/
+Content-Type: application/json
+Authorization: Token 694c62e128ebf628788df82b8151ddbfd56a715f
+
+{
+  "ids_contact": [1, 3]
+}
+
+### Размещение клиентом заказа
+POST {{baseUrl}}/order/
+Content-Type:application/json
+Authorization: Token df381cfa79746e1c46445816d02db50aee95f9ae
+
+{
+  "order_id": 1,
+  "contact_id": 1
+}
+
+### Просмотр клиентом всех заказов
+GET {{baseUrl}}/order/
+Content-Type: application/json
+Authorization: Token df381cfa79746e1c46445816d02db50aee95f9ae
+
+{
+    "id_order": "all"
+}
+
+### Просмотр клиентом заказа
+GET {{baseUrl}}/order/
+Content-Type: application/json
+Authorization: Token df381cfa79746e1c46445816d02db50aee95f9ae
+
+{
+    "id_order": 1
+}
+
+### Обработка продавцом заказов клиентов во всех статусах
+GET {{baseUrl}}/partner/orders/
+Content-Type:application/json
+Authorization: Token e6009d83d3b0d52d3478f0f6da8724a51ca19371
+
+{
+    "state_order": "all"
+}
+
+### Обработка продавцом заказов клиентов в выбранном статусе
+GET {{baseUrl}}/partner/orders/
+Content-Type:application/json
+Authorization: Token a8d75f9e23a917614bb747cfbdddeebc972398cf
+
+{
+    "state_order": "new"
+}
+
+### Получение токена для сброса пароля клиентом 1 
+POST {{baseUrl}}/user/password_reset/
+Content-Type: application/json
+
+{
+    "email": "tanyamyasnov1712@yandex.ru"
+}
+
+### Получение токена для сброса пароля клиентом 2 
+POST {{baseUrl}}/user/password_reset/
+Content-Type: application/json
+
+{
+    "email": "igormyasnov2107@yandex.ru"
+}
+
+### Получение токена для сброса пароля продавцом 1 
+POST {{baseUrl}}/user/password_reset/
+Content-Type: application/json
+
+{
+    "email": "tanyamyasnov1712@yandex.ru"
+}
+
+### Получение токена для сброса пароля продавцом 2 
+POST {{baseUrl}}/user/password_reset/
+Content-Type: application/json
+
+{
+    "email": "tanyamyasnov1712@yandex.ru"
+}
+
+### Изменение пароля клиентом 1
+POST {{baseUrl}}/user/password_reset/confirm/
+Content-Type: application/json
+
+{
+    "password": "newclient1password",
+    "token": "af29ec39af25875252ade40a8a5922e20160"
+}
+
+### Изменение пароля клиентом 2
+POST {{baseUrl}}/user/password_reset/confirm/
+Content-Type: application/json
+
+{
+    "password": "newclient2password",
+    "token": "66f86ab6f5bc98c991e5ce40bc5dee61ec229c"
+}
+
+### Изменение пароля продавцом 1
+POST {{baseUrl}}/user/password_reset/confirm/
+Content-Type: application/json
+
+{
+    "password": "newclient2password",
+    "token": "66f86ab6f5bc98c991e5ce40bc5dee61ec229c"
+}
+
+### Изменение пароля продавцом 2
+POST {{baseUrl}}/user/password_reset/confirm/
+Content-Type: application/json
+
+{
+    "password": "newclient2password",
+    "token": "66f86ab6f5bc98c991e5ce40bc5dee61ec229c"
+}
